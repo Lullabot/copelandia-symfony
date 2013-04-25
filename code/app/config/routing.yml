@@ -1,0 +1,4 @@
+lullabot_recipe:
+    resource: "@LullabotRecipeBundle/Resources/config/routing.yml"
+    prefix:   /
+

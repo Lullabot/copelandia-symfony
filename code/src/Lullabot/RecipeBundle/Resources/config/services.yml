@@ -1,0 +1,7 @@
+parameters:
+#    lullabot_recipe.example.class: Lullabot\RecipeBundle\Example
+
+services:
+#    lullabot_recipe.example:
+#        class: %lullabot_recipe.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

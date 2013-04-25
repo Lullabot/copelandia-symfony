@@ -1,0 +1,3 @@
+lullabot_recipe_homepage:
+    pattern:  /recipes
+    defaults: { _controller: LullabotRecipeBundle:Default:index }
