@@ -23,4 +23,18 @@ class DefaultController extends Controller
 
       return $this->render('LullabotRecipeBundle:Default:index.html.twig', array('recipes' => $recipes));
     }
+
+    /**
+     * Shows a recipe.
+     *
+     * @param int $id The id of a recipe.
+     */
+    public function showAction($id)
+    {
+      $client = new Client('http://copelandia.local');
+      $request = $client->get('/node/' . $id . '.json');
+      $recipe = $request->send()->json();
+
+      return $this->render('LullabotRecipeBundle:Default:show.html.twig', array('recipe' => $recipe));
+    }
 }

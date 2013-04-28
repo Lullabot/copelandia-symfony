@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+  <h1>{{ recipe.title }}</h1>
+
+  {{ recipe.body.value|raw }}
+
+  <h2>Preparation</h2>
+  {{ recipe.field_recipe_instructions }}
+{% endblock %}

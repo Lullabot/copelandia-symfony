@@ -1,7 +1,9 @@
-<h1>Welcome to Copelandia</h1>
+{% extends '::base.html.twig' %}
 
-<ul>
-  {% for recipe in recipes %}
-    <li>{{ recipe.title }}</li>
-  {% endfor %}
-</ul>
+{% block body %}
+  <ul>
+    {% for recipe in recipes %}
+      <li><a href="{{ path('lullabot_recipe_show', {'id': recipe.nid}) }}">{{ recipe.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

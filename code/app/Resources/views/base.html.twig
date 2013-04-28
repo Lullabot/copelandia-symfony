@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Welcome to Copelandia!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <h1><a href="{{ path('homepage') }}">Copelandia</a></h1>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
