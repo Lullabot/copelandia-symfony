@@ -3,8 +3,39 @@
 {% block body %}
   <h1>{{ recipe.title }}</h1>
 
+  {% if recipe.field_submitted_by %}
+    <p><strong>Submitted by: </strong> {{ recipe.field_submitted_by }}</p>
+  {% endif %}
+
+  {% if recipe.field_recipe_source %}
+    <p><strong>Source: </strong> {{ recipe.field_recipe_source}}</p>
+  {% endif %}
+
   {{ recipe.body.value|raw }}
 
+  <h2>Ingredients</h2>
+  <ul>
+  {% for ingredient in recipe.ingredients %}
+    <li>{{ ingredient.field_ingredient_ingredient}} <i>{{ ingredient.field_ingredient_amount }}"</i></li>
+  {% else %}
+    <li>This recipe has no ingredients... maybe there is a fast food phone number to call?</li>
+  {% endfor %}
+  </ul>
+
   <h2>Preparation</h2>
+
+  {% if recipe.field_recipe_prep_time %}
+    <p><strong>Time: </strong> {{ recipe.field_recipe_prep_time }} minutes</p>
+  {% endif %}
+
+  {% if recipe.field_recipe_cook_time %}
+    <p><strong>Cook time: </strong> {{ recipe.field_recipe_cook_time }} minutes</p>
+  {% endif %}
+
+  {% if recipe.field_recipe_servings %}
+    <p><strong>Serves: </strong> {{ recipe.field_recipe_servings }} humans</p>
+  {% endif %}
+
   {{ recipe.field_recipe_instructions }}
+
 {% endblock %}
