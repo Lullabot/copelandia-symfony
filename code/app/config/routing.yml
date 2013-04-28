@@ -2,3 +2,6 @@ lullabot_recipe:
     resource: "@LullabotRecipeBundle/Resources/config/routing.yml"
     prefix:   /
 
+homepage:
+    path:  /
+    defaults: { _controller: LullabotRecipeBundle:Default:index }
