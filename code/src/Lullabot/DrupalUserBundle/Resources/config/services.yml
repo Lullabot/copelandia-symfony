@@ -1,0 +1,7 @@
+parameters:
+#    lullabot_drupal_user.example.class: Lullabot\DrupalUserBundle\Example
+
+services:
+#    lullabot_drupal_user.example:
+#        class: %lullabot_drupal_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

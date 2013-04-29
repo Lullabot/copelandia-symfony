@@ -1,3 +1,7 @@
+lullabot_drupal_user:
+    resource: "@LullabotDrupalUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 lullabot_recipe:
     resource: "@LullabotRecipeBundle/Resources/config/routing.yml"
     prefix:   /
