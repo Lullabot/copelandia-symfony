@@ -11,7 +11,11 @@
     <p><strong>Source: </strong> {{ recipe.field_recipe_source}}</p>
   {% endif %}
 
-  {{ recipe.body.value|raw }}
+  {% if recipe.body is defined %}
+    {% if recipe.body.value is defined %}
+      {{ recipe.body.value|raw }}
+    {% endif %}
+  {% endif %}
 
   <h2>Ingredients</h2>
   <ul>
@@ -36,6 +40,10 @@
     <p><strong>Serves: </strong> {{ recipe.field_recipe_servings }} humans</p>
   {% endif %}
 
-  {{ recipe.field_recipe_instructions }}
+  {% if recipe.body is defined %}
+    {% if recipe.body.value is defined %}
+      {{ recipe.field_recipe_instructions }}
+    {% endif %}
+  {% endif %}
 
 {% endblock %}
