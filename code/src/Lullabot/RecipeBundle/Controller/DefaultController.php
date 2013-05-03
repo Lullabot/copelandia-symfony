@@ -12,7 +12,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-      $client = new Client('http://copelandia.local');
+      $client = new Client('http://copelandia.lulladev.com');
       $request = $client->get('/node.json');
       $response = $request->send()->json();
 
@@ -32,7 +32,7 @@ class DefaultController extends Controller
     public function showAction($id)
     {
       // Obtain recipe details.
-      $client = new Client('http://copelandia.local');
+      $client = new Client('http://copelandia.lulladev.com');
       $request = $client->get('/node/' . $id . '.json');
       $recipe = $request->send()->json();
 
