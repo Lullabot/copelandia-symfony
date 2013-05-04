@@ -15,3 +15,9 @@ composer install
 
 1. Create a virtual host that points to code/web.
 1. Open app_dev.php/cofig at your web browser to set up a database.
+
+## Sending emails
+
+A the moment emails are sent through Gmail using Swiftmailer library. You need to
+set mailer_user and mailer_password at code/app/config/parameters.yml so emails
+can be sent.

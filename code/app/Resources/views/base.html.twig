@@ -8,6 +8,12 @@
     </head>
     <body>
         <h1><a href="{{ path('homepage') }}">Copelandia</a></h1>
+        <div style="position:absolute;top:20px;right:100px;"><a href="{{ path('lullabot_drupal_register') }}">Register</a></div>
+        {% if app.session.hasFlash('notice') %}
+          <div class="flash-notice">
+            <p style="color:pink;font-weight:bold;">{{ app.session.flash('notice') }}</p>
+          </div>
+        {% endif %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

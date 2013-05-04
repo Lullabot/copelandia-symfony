@@ -1,0 +1,6 @@
+<p>Enter your email address to register in the site.</p>
+<form action="{{ path('lullabot_drupal_register') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+
+    <input type="submit" />
+</form>
