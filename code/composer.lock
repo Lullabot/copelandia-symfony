@@ -598,16 +598,16 @@
         },
         {
             "name": "guzzle/guzzle",
-            "version": "v3.4.1",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "v3.4.1"
+                "reference": "v3.4.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/v3.4.1",
-                "reference": "v3.4.1",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/v3.4.3",
+                "reference": "v3.4.3",
                 "shasum": ""
             },
             "require": {
@@ -653,7 +653,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -688,7 +688,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2013-04-16 20:56:26"
+            "time": "2013-04-30 20:31:38"
         },
         {
             "name": "jdorn/sql-formatter",
