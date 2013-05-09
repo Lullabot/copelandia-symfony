@@ -5,7 +5,7 @@ This project implements a Symfony 2 client that interacts with Copelandia.
 ## Installation
 
 1. Clone this project.
-1. Install composer from http://getcomposer.org/doc/00-intro.md#system-requirements
+1. [Install composer](http://getcomposer.org/doc/00-intro.md#globally).
 1. Install all the dependencies by doing:
 
 ``` bash
