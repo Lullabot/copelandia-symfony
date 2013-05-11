@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormError;
 use Guzzle\Http\Client;
+use Guzzle\Plugin\Oauth\OauthPlugin;
 
 class DefaultController extends Controller
 {
@@ -14,48 +15,47 @@ class DefaultController extends Controller
    */
   public function registerAction(Request $request)
   {
+    // Build registration form.
     $form = $this->createFormBuilder()
-      ->add('email', 'email')
+      ->add('mail', 'email')
+      ->add('pass', 'password')
       ->getForm();
 
+    // Process form submission.
     if ($request->isMethod('POST')) {
       $form->bind($request);
-
       if ($form->isValid()) {
-        // Register the user.
+        // Create, authenticate and populate the request.
         $data = $form->getData();
         $client = new Client('http://copelandia.local');
-        $request = $client->post('api/v1/user/register')
-          ->addPostFields(array('email' => $data['email']));
-        $response = $request->send()->json();
-
-        // Evaluate the response. If OK we have a reset password link. If KO, an error message.
-        if ($response['status'] == 'OK') {
-          // Send an email to verify and activate account.
-          // @todo this should be a link to this site that notifies Drupal that
-          // the account has been verified.
-          $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('send@example.com')
-            ->setTo($data['email'])
-            ->setBody(
-              $this->renderView(
-                'LullabotDrupalUserBundle:Default:welcome.html.twig',
-                  array('url' => $response['message'])
-                )
-            );
-          $this->get('mailer')->send($message);
-
-          // Show a message and redirect to the homepage.
-          $this->get('session')->getFlashBag()->add('notice', 'Please check your email to complete registration.');
+        $client->addSubscriber(new OauthPlugin(array(
+          'consumer_key'  => '4UJQ3xW6e2E9aLbkMXQcUG772rE3FTVz',
+          'consumer_secret' => 'fWT4py9n9PLzQ5STeZCPiPhopfszAPq4',
+        )));
+        $request = $client->post('/api/user', null, array(
+          'name' => preg_replace('/[^a-z0-9]/', '', $data['mail']),
+          'mail' => $data['mail'],
+          'pass' => $data['pass'],
+          'status' => 1,
+        ));
+        try {
+          // Create the user and redirect to the homepage.
+          $response = $request->send()->json();
+          $this->get('session')->getFlashBag()->add('notice', 'Registered');
           return $this->redirect($this->generateUrl('homepage'));
-        }
-        else {
-          // There was an error. Just rebuild the form and show the message.
-          $form->get('email')->addError(new FormError($response['message']));
+        } catch (\Exception $e) {
+          // Add the errors to the form.
+          $errors = $e->getResponse()->json();
+          // The name field in Drupal is not needed here since we use the mail.
+          unset($errors['form_errors']['name']);
+          foreach ($errors['form_errors'] as $field_name => $message) {
+            $form->get($field_name)->addError(new FormError($message));
+          }
         }
       }
     }
+
+    // Render the form.
     return $this->render('LullabotDrupalUserBundle:Default:register.html.twig', array(
       'form' => $form->createView(),
     ));
