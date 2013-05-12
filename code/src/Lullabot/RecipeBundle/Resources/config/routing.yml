@@ -6,3 +6,6 @@ lullabot_recipe_show:
   defaults: { _controller: LullabotRecipeBundle:Default:show }
   requirements:
     id: \d+
+lullabot_recipe_create:
+  pattern:  /recipes/create
+  defaults: { _controller: LullabotRecipeBundle:Default:create }

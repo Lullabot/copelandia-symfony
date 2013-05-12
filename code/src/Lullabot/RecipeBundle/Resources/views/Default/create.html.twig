@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+  <p>Enter your recipe details in the following form.</p>
+
+  <form action="{{ path('lullabot_recipe_create') }}" method="post" {{ form_enctype(form) }}>
+      {{ form_widget(form) }}
+
+      <input type="submit" />
+  </form>
+{% endblock %}
