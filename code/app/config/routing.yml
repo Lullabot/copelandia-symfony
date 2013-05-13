@@ -5,6 +5,9 @@ login:
 login_check:
     pattern:   /login_check
 
+logout:
+    pattern:   /logout
+
 lullabot_drupal_user:
     resource: "@LullabotDrupalUserBundle/Resources/config/routing.yml"
     prefix:   /
