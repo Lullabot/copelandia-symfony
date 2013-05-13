@@ -1,3 +1,10 @@
+login:
+    pattern:   /login
+    defaults:  { _controller: LullabotDrupalUserBundle:Default:login }
+
+login_check:
+    pattern:   /login_check
+
 lullabot_drupal_user:
     resource: "@LullabotDrupalUserBundle/Resources/config/routing.yml"
     prefix:   /
