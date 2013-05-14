@@ -23,4 +23,3 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/recipes/create, roles: ROLE_EDITOR }
