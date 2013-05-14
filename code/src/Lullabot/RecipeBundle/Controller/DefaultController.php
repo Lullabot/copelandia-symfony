@@ -16,7 +16,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-      $client = new Client('http://copelandia.lulladev.com');
+      $client = new Client($this->container->getParameter('backend_host'));
       $request = $client->get('/node.json');
       $response = $request->send()->json();
 
@@ -36,7 +36,7 @@ class DefaultController extends Controller
     public function showAction($id)
     {
       // Obtain recipe details.
-      $client = new Client('http://copelandia.lulladev.com');
+      $client = new Client($this->container->getParameter('backend_host'));
       $request = $client->get('/node/' . $id . '.json');
       $recipe = $request->send()->json();
 
@@ -74,7 +74,7 @@ class DefaultController extends Controller
         if ($form->isValid()) {
           // Create, authenticate and populate the request.
           $data = $form->getData();
-          $client = new Client('http://copelandia.local');
+          $client = new Client($this->container->getParameter('backend_host'));
           $client->addSubscriber(new OauthPlugin(array(
             'consumer_key'  => '4UJQ3xW6e2E9aLbkMXQcUG772rE3FTVz',
             'consumer_secret' => 'fWT4py9n9PLzQ5STeZCPiPhopfszAPq4',
