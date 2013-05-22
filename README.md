@@ -14,6 +14,8 @@ composer install
 ```
 
 1. Copy code/app/config/parameters.yml.default into code/app/config/parameters.yml
-   and edit it to suit your needs.
 1. Create a virtual host that points to code/web.
-1. Open app_dev.php/config at your web browser to set up a database.
+1. Open http://yourlocalsite/app_dev.php. You should see a list of recipes which
+   by default are pulled from http://copelandia.lulladev.com.
+1. Optionally, install https://github.com/Lullabot/copelandia locally and set
+   the backend_host parameter accordingly.
