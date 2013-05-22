@@ -30,8 +30,8 @@ class DefaultController extends Controller
         $data = $form->getData();
         $client = new Client($this->container->getParameter('backend_host'));
         $client->addSubscriber(new OauthPlugin(array(
-          'consumer_key'  => '4UJQ3xW6e2E9aLbkMXQcUG772rE3FTVz',
-          'consumer_secret' => 'fWT4py9n9PLzQ5STeZCPiPhopfszAPq4',
+          'consumer_key'  => $this->container->getParameter('oauth_consumer_key'),
+          'consumer_secret' => $this->container->getParameter('oauth_consumer_secret'),
         )));
         $request = $client->post('/api/user', null, array(
           'name' => preg_replace('/[^a-z0-9]/', '', $data['mail']),
@@ -47,7 +47,7 @@ class DefaultController extends Controller
         } catch (\Exception $e) {
           // Add the errors to the form.
           $errors = $e->getResponse()->json();
-          // The name field in Drupal is not needed here since we use the mail.
+          // The name field in Drupal is not needed here since we use the email instead of it.
           unset($errors['form_errors']['name']);
           foreach ($errors['form_errors'] as $field_name => $message) {
             $form->get($field_name)->addError(new FormError($message));

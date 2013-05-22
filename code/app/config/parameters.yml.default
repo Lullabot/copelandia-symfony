@@ -1,0 +1,23 @@
+# Rename this file to parameters.yml and follow comments to set it up.
+parameters:
+    # No database is needed so the following can be left as it is.
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: symfony
+    database_user: root
+    database_password: null
+    database_path: null
+    locale: en
+    # Set the following to a random string.
+    secret: setthistosomerandomtext
+    # This is the Drupal host where the data is located.
+    # If you install https://github.com/Lullabot/copelandia locally, set this
+    # to the local host where it is set up so requests are made there instead.
+    backend_host: http://copelandia.lulladev.com
+    # These optional keys are needed for authenticated actions such as registering a
+    # user or submitting a recipe. Have a look at the OAuth section of the
+    # README file at https://github.com/Lullabot/copelandia for instructions
+    # to set it up.
+    oauth_consumer_key: null
+    oauth_consumer_secret: null

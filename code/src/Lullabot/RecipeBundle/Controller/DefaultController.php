@@ -76,8 +76,8 @@ class DefaultController extends Controller
           $data = $form->getData();
           $client = new Client($this->container->getParameter('backend_host'));
           $client->addSubscriber(new OauthPlugin(array(
-            'consumer_key'  => '4UJQ3xW6e2E9aLbkMXQcUG772rE3FTVz',
-            'consumer_secret' => 'fWT4py9n9PLzQ5STeZCPiPhopfszAPq4',
+            'consumer_key'  => $this->container->getParameter('oauth_consumer_key'),
+            'consumer_secret' => $this->container->getParameter('oauth_consumer_secret'),
           )));
           $request = $client->post('/api/node', null, array(
             'title' => $data['title'],
