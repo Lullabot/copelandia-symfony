@@ -21,3 +21,8 @@ parameters:
     # to set it up.
     oauth_consumer_key: null
     oauth_consumer_secret: null
+    # Email settings
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
