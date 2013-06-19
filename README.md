@@ -2,6 +2,8 @@
 
 This project implements a Symfony 2 client that interacts with Copelandia.
 
+See it working at http://copesf.lulladev.com.
+
 ## Installation
 
 1. Clone this project.
